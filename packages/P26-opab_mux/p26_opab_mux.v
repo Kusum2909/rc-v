@@ -14,7 +14,14 @@ module p26_opab_mux (
     output wire [31:0] b
 );
 
-    assign a = 32'd0;   // placeholder
-    assign b = 32'd0;   // placeholder
+        assign a = a_zero  ? 32'd0 :
+               asel_pc ? pc    :
+                         rs1;
+
+    assign b = bsel_imm ? imm : rs2;
 
 endmodule
+
+
+
+
